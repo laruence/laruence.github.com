@@ -1,0 +1,2 @@
+Since this is a temporary fix, so only changed the version literal number after configure.
+These patches have better applied after configure(php_version.h generated).
