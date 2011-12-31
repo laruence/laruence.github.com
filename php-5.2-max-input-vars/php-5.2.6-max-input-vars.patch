@@ -9,6 +9,7 @@ diff -u -r php-5.2.6/configure.in php-5.2.6-patched/configure.in
 +PHP_EXTRA_VERSION="p1"
  PHP_VERSION="$PHP_MAJOR_VERSION.$PHP_MINOR_VERSION.$PHP_RELEASE_VERSION$PHP_EXTRA_VERSION"
  PHP_VERSION_ID=`expr [$]PHP_MAJOR_VERSION \* 10000 + [$]PHP_MINOR_VERSION \* 100 + [$]PHP_RELEASE_VERSION`
+
 diff -u -r php-5.2.6/main/main.c php-5.2.6-patched/main/main.c
 --- php-5.2.6/main/main.c	2008-03-06 04:58:08.000000000 +0800
 +++ php-5.2.6-patched/main/main.c	2011-12-31 09:40:50.000000000 +0800
