@@ -1,3 +1,15 @@
+diff -u -r php-5.2.10/configure php-5.2.10-patched/configure
+--- php-5.2.10/configure	2009-06-17 20:35:22.000000000 +0800
++++ php-5.2.10-patched/configure	2011-12-31 11:40:13.000000000 +0800
+@@ -2432,7 +2432,7 @@
+ PHP_MAJOR_VERSION=5
+ PHP_MINOR_VERSION=2
+ PHP_RELEASE_VERSION=10
+-PHP_EXTRA_VERSION=""
++PHP_EXTRA_VERSION="p1"
+ PHP_VERSION="$PHP_MAJOR_VERSION.$PHP_MINOR_VERSION.$PHP_RELEASE_VERSION$PHP_EXTRA_VERSION"
+ PHP_VERSION_ID=`expr $PHP_MAJOR_VERSION \* 10000 + $PHP_MINOR_VERSION \* 100 + $PHP_RELEASE_VERSION`
+ 
 diff -u -r php-5.2.10/main/main.c php-5.2.10-patched/main/main.c
 --- php-5.2.10/main/main.c	2009-05-05 03:55:42.000000000 +0800
 +++ php-5.2.10-patched/main/main.c	2011-12-30 16:27:57.000000000 +0800
@@ -10,7 +22,6 @@ diff -u -r php-5.2.10/main/main.c php-5.2.10-patched/main/main.c
  	STD_PHP_INI_BOOLEAN("always_populate_raw_post_data",	"0",	PHP_INI_SYSTEM|PHP_INI_PERDIR,	OnUpdateBool,	always_populate_raw_post_data,	php_core_globals,	core_globals)
  
  	STD_PHP_INI_ENTRY("realpath_cache_size",	"16K",		PHP_INI_SYSTEM,		OnUpdateLong,	realpath_cache_size_limit,	virtual_cwd_globals,	cwd_globals)
-Only in php-5.2.10-patched/main: php_config.h
 diff -u -r php-5.2.10/main/php_globals.h php-5.2.10-patched/main/php_globals.h
 --- php-5.2.10/main/php_globals.h	2008-12-31 19:17:47.000000000 +0800
 +++ php-5.2.10-patched/main/php_globals.h	2011-12-30 16:27:01.000000000 +0800
@@ -47,11 +58,13 @@ diff -u -r php-5.2.10/main/php_variables.c php-5.2.10-patched/main/php_variables
  			if (escaped_index != index) {
 diff -u -r php-5.2.10/main/php_version.h php-5.2.10-patched/main/php_version.h
 --- php-5.2.10/main/php_version.h	2009-06-17 20:22:41.000000000 +0800
-+++ php-5.2.10-patched/main/php_version.h	2011-12-30 16:48:14.000000000 +0800
-@@ -4,5 +4,5 @@
++++ php-5.2.10-patched/main/php_version.h	2011-12-31 11:40:15.000000000 +0800
+@@ -3,6 +3,6 @@
+ #define PHP_MAJOR_VERSION 5
  #define PHP_MINOR_VERSION 2
  #define PHP_RELEASE_VERSION 10
- #define PHP_EXTRA_VERSION ""
+-#define PHP_EXTRA_VERSION ""
 -#define PHP_VERSION "5.2.10"
-+#define PHP_VERSION "5.2.10-p1"
++#define PHP_EXTRA_VERSION "p1"
++#define PHP_VERSION "5.2.10p1"
  #define PHP_VERSION_ID 50210

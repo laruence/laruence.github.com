@@ -1,19 +1,19 @@
-diff -u -r php-5.2.14/configure php-5.2.14-patched/configure
---- php-5.2.14/configure	2010-07-21 22:31:30.000000000 +0800
-+++ php-5.2.14-patched/configure	2011-12-31 11:44:10.000000000 +0800
-@@ -2165,7 +2165,7 @@
+diff -u -r php-5.2.9/configure php-5.2.9-patched/configure
+--- php-5.2.9/configure	2009-02-25 23:39:40.000000000 +0800
++++ php-5.2.9-patched/configure	2011-12-31 11:32:09.000000000 +0800
+@@ -2430,7 +2430,7 @@
  PHP_MAJOR_VERSION=5
  PHP_MINOR_VERSION=2
- PHP_RELEASE_VERSION=14
+ PHP_RELEASE_VERSION=9
 -PHP_EXTRA_VERSION=""
 +PHP_EXTRA_VERSION="p1"
  PHP_VERSION="$PHP_MAJOR_VERSION.$PHP_MINOR_VERSION.$PHP_RELEASE_VERSION$PHP_EXTRA_VERSION"
  PHP_VERSION_ID=`expr $PHP_MAJOR_VERSION \* 10000 + $PHP_MINOR_VERSION \* 100 + $PHP_RELEASE_VERSION`
  
-diff -u -r php-5.2.14/main/main.c php-5.2.14-patched/main/main.c
---- php-5.2.14/main/main.c	2010-06-20 04:47:24.000000000 +0800
-+++ php-5.2.14-patched/main/main.c	2011-12-31 10:28:02.000000000 +0800
-@@ -457,6 +457,7 @@
+diff -u -r php-5.2.9/main/main.c php-5.2.9-patched/main/main.c
+--- php-5.2.9/main/main.c	2008-12-31 19:17:47.000000000 +0800
++++ php-5.2.9-patched/main/main.c	2011-12-31 11:28:51.000000000 +0800
+@@ -455,6 +455,7 @@
  
  	STD_PHP_INI_BOOLEAN("allow_url_fopen",		"1",		PHP_INI_SYSTEM,		OnUpdateBool,		allow_url_fopen,		php_core_globals,	core_globals)
  	STD_PHP_INI_BOOLEAN("allow_url_include",	"0",		PHP_INI_SYSTEM,		OnUpdateBool,		allow_url_include,		php_core_globals,	core_globals)
@@ -21,20 +21,20 @@ diff -u -r php-5.2.14/main/main.c php-5.2.14-patched/main/main.c
  	STD_PHP_INI_BOOLEAN("always_populate_raw_post_data",	"0",	PHP_INI_SYSTEM|PHP_INI_PERDIR,	OnUpdateBool,	always_populate_raw_post_data,	php_core_globals,	core_globals)
  
  	STD_PHP_INI_ENTRY("realpath_cache_size",	"16K",		PHP_INI_SYSTEM,		OnUpdateLong,	realpath_cache_size_limit,	virtual_cwd_globals,	cwd_globals)
-diff -u -r php-5.2.14/main/php_globals.h php-5.2.14-patched/main/php_globals.h
---- php-5.2.14/main/php_globals.h	2010-01-03 17:23:27.000000000 +0800
-+++ php-5.2.14-patched/main/php_globals.h	2011-12-31 10:27:39.000000000 +0800
+diff -u -r php-5.2.9/main/php_globals.h php-5.2.9-patched/main/php_globals.h
+--- php-5.2.9/main/php_globals.h	2008-12-31 19:17:47.000000000 +0800
++++ php-5.2.9-patched/main/php_globals.h	2011-12-31 11:28:24.000000000 +0800
 @@ -160,6 +160,7 @@
  	zend_bool com_initialized;
  #endif
  	long max_input_nesting_level;
 +	long max_input_vars;
  	zend_bool in_user_include;
- 	zend_bool in_error_log;
  };
-diff -u -r php-5.2.14/main/php_variables.c php-5.2.14-patched/main/php_variables.c
---- php-5.2.14/main/php_variables.c	2010-01-03 17:23:27.000000000 +0800
-+++ php-5.2.14-patched/main/php_variables.c	2011-12-31 10:28:51.000000000 +0800
+ 
+diff -u -r php-5.2.9/main/php_variables.c php-5.2.9-patched/main/php_variables.c
+--- php-5.2.9/main/php_variables.c	2008-12-31 19:17:47.000000000 +0800
++++ php-5.2.9-patched/main/php_variables.c	2011-12-31 11:29:50.000000000 +0800
 @@ -187,6 +187,9 @@
  				}
  				if (zend_symtable_find(symtable1, escaped_index, index_len + 1, (void **) &gpc_element_p) == FAILURE
@@ -55,15 +55,15 @@ diff -u -r php-5.2.14/main/php_variables.c php-5.2.14-patched/main/php_variables
  				zend_symtable_update(symtable1, escaped_index, index_len + 1, &gpc_element, sizeof(zval *), (void **) &gpc_element_p);
  			}
  			if (escaped_index != index) {
-diff -u -r php-5.2.14/main/php_version.h php-5.2.14-patched/main/php_version.h
---- php-5.2.14/main/php_version.h	2010-07-21 18:32:07.000000000 +0800
-+++ php-5.2.14-patched/main/php_version.h	2011-12-31 11:44:13.000000000 +0800
+diff -u -r php-5.2.9/main/php_version.h php-5.2.9-patched/main/php_version.h
+--- php-5.2.9/main/php_version.h	2009-02-25 22:56:50.000000000 +0800
++++ php-5.2.9-patched/main/php_version.h	2011-12-31 11:32:15.000000000 +0800
 @@ -3,6 +3,6 @@
  #define PHP_MAJOR_VERSION 5
  #define PHP_MINOR_VERSION 2
- #define PHP_RELEASE_VERSION 14
+ #define PHP_RELEASE_VERSION 9
 -#define PHP_EXTRA_VERSION ""
--#define PHP_VERSION "5.2.14"
+-#define PHP_VERSION "5.2.9"
 +#define PHP_EXTRA_VERSION "p1"
-+#define PHP_VERSION "5.2.14p1"
- #define PHP_VERSION_ID 50214
++#define PHP_VERSION "5.2.9p1"
+ #define PHP_VERSION_ID 50209

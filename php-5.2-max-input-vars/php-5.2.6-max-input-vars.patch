@@ -1,5 +1,17 @@
+diff -u -r php-5.2.6/configure php-5.2.6-patched/configure
+--- php-5.2.6/configure	2008-05-01 02:37:32.000000000 +0800
++++ php-5.2.6-patched/configure	2011-12-31 11:36:49.000000000 +0800
+@@ -2430,7 +2430,7 @@
+ PHP_MAJOR_VERSION=5
+ PHP_MINOR_VERSION=2
+ PHP_RELEASE_VERSION=6
+-PHP_EXTRA_VERSION=""
++PHP_EXTRA_VERSION="p1"
+ PHP_VERSION="$PHP_MAJOR_VERSION.$PHP_MINOR_VERSION.$PHP_RELEASE_VERSION$PHP_EXTRA_VERSION"
+ PHP_VERSION_ID=`expr $PHP_MAJOR_VERSION \* 10000 + $PHP_MINOR_VERSION \* 100 + $PHP_RELEASE_VERSION`
+ 
 diff -u -r php-5.2.6/configure.in php-5.2.6-patched/configure.in
---- php-5.2.6/configure.in	2011-12-31 09:49:35.000000000 +0800
+--- php-5.2.6/configure.in	2008-05-01 02:27:55.000000000 +0800
 +++ php-5.2.6-patched/configure.in	2011-12-31 09:50:02.000000000 +0800
 @@ -42,7 +42,7 @@
  PHP_MAJOR_VERSION=5
@@ -9,7 +21,7 @@ diff -u -r php-5.2.6/configure.in php-5.2.6-patched/configure.in
 +PHP_EXTRA_VERSION="p1"
  PHP_VERSION="$PHP_MAJOR_VERSION.$PHP_MINOR_VERSION.$PHP_RELEASE_VERSION$PHP_EXTRA_VERSION"
  PHP_VERSION_ID=`expr [$]PHP_MAJOR_VERSION \* 10000 + [$]PHP_MINOR_VERSION \* 100 + [$]PHP_RELEASE_VERSION`
-
+ 
 diff -u -r php-5.2.6/main/main.c php-5.2.6-patched/main/main.c
 --- php-5.2.6/main/main.c	2008-03-06 04:58:08.000000000 +0800
 +++ php-5.2.6-patched/main/main.c	2011-12-31 09:40:50.000000000 +0800
@@ -55,3 +67,15 @@ diff -u -r php-5.2.6/main/php_variables.c php-5.2.6-patched/main/php_variables.c
  				zend_symtable_update(symtable1, escaped_index, index_len + 1, &gpc_element, sizeof(zval *), (void **) &gpc_element_p);
  			}
  			if (escaped_index != index) {
+diff -u -r php-5.2.6/main/php_version.h php-5.2.6-patched/main/php_version.h
+--- php-5.2.6/main/php_version.h	2008-05-01 02:27:56.000000000 +0800
++++ php-5.2.6-patched/main/php_version.h	2011-12-31 11:36:51.000000000 +0800
+@@ -3,6 +3,6 @@
+ #define PHP_MAJOR_VERSION 5
+ #define PHP_MINOR_VERSION 2
+ #define PHP_RELEASE_VERSION 6
+-#define PHP_EXTRA_VERSION ""
+-#define PHP_VERSION "5.2.6"
++#define PHP_EXTRA_VERSION "p1"
++#define PHP_VERSION "5.2.6p1"
+ #define PHP_VERSION_ID 50206

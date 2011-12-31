@@ -1,3 +1,27 @@
+diff -u -r php-5.2.4/configure php-5.2.4-patched/configure
+--- php-5.2.4/configure	2007-08-30 07:39:18.000000000 +0800
++++ php-5.2.4-patched/configure	2011-12-31 11:31:45.000000000 +0800
+@@ -2430,7 +2430,7 @@
+ PHP_MAJOR_VERSION=5
+ PHP_MINOR_VERSION=2
+ PHP_RELEASE_VERSION=4
+-PHP_EXTRA_VERSION=""
++PHP_EXTRA_VERSION="p1"
+ PHP_VERSION="$PHP_MAJOR_VERSION.$PHP_MINOR_VERSION.$PHP_RELEASE_VERSION$PHP_EXTRA_VERSION"
+ PHP_VERSION_ID=`expr $PHP_MAJOR_VERSION \* 10000 + $PHP_MINOR_VERSION \* 100 + $PHP_RELEASE_VERSION`
+ 
+diff -u -r php-5.2.4/configure.in php-5.2.4-patched/configure.in
+--- php-5.2.4/configure.in	2007-08-30 07:36:11.000000000 +0800
++++ php-5.2.4-patched/configure.in	2011-12-31 09:51:24.000000000 +0800
+@@ -42,7 +42,7 @@
+ PHP_MAJOR_VERSION=5
+ PHP_MINOR_VERSION=2
+ PHP_RELEASE_VERSION=4
+-PHP_EXTRA_VERSION=""
++PHP_EXTRA_VERSION="p1"
+ PHP_VERSION="$PHP_MAJOR_VERSION.$PHP_MINOR_VERSION.$PHP_RELEASE_VERSION$PHP_EXTRA_VERSION"
+ PHP_VERSION_ID=`expr [$]PHP_MAJOR_VERSION \* 10000 + [$]PHP_MINOR_VERSION \* 100 + [$]PHP_RELEASE_VERSION`
+ 
 diff -u -r php-5.2.4/main/main.c php-5.2.4-patched/main/main.c
 --- php-5.2.4/main/main.c	2007-08-03 09:30:21.000000000 +0800
 +++ php-5.2.4-patched/main/main.c	2011-12-30 17:12:24.000000000 +0800
@@ -9,7 +33,6 @@ diff -u -r php-5.2.4/main/main.c php-5.2.4-patched/main/main.c
  	STD_PHP_INI_BOOLEAN("always_populate_raw_post_data",		"0",		PHP_INI_SYSTEM|PHP_INI_PERDIR,		OnUpdateBool,			always_populate_raw_post_data,			php_core_globals,	core_globals)
  	STD_PHP_INI_ENTRY("realpath_cache_size", "16K", PHP_INI_SYSTEM, OnUpdateLong, realpath_cache_size_limit, virtual_cwd_globals, cwd_globals)
  	STD_PHP_INI_ENTRY("realpath_cache_ttl", "120", PHP_INI_SYSTEM, OnUpdateLong, realpath_cache_ttl, virtual_cwd_globals, cwd_globals)
-Only in php-5.2.4-patched/main: php_config.h
 diff -u -r php-5.2.4/main/php_globals.h php-5.2.4-patched/main/php_globals.h
 --- php-5.2.4/main/php_globals.h	2007-07-24 22:21:36.000000000 +0800
 +++ php-5.2.4-patched/main/php_globals.h	2011-12-30 17:12:34.000000000 +0800
@@ -46,11 +69,13 @@ diff -u -r php-5.2.4/main/php_variables.c php-5.2.4-patched/main/php_variables.c
  			if (escaped_index != index) {
 diff -u -r php-5.2.4/main/php_version.h php-5.2.4-patched/main/php_version.h
 --- php-5.2.4/main/php_version.h	2007-08-30 07:36:11.000000000 +0800
-+++ php-5.2.4-patched/main/php_version.h	2011-12-30 17:18:29.000000000 +0800
-@@ -4,5 +4,5 @@
++++ php-5.2.4-patched/main/php_version.h	2011-12-31 11:31:48.000000000 +0800
+@@ -3,6 +3,6 @@
+ #define PHP_MAJOR_VERSION 5
  #define PHP_MINOR_VERSION 2
  #define PHP_RELEASE_VERSION 4
- #define PHP_EXTRA_VERSION ""
+-#define PHP_EXTRA_VERSION ""
 -#define PHP_VERSION "5.2.4"
-+#define PHP_VERSION "5.2.4-p1"
++#define PHP_EXTRA_VERSION "p1"
++#define PHP_VERSION "5.2.4p1"
  #define PHP_VERSION_ID 50204
