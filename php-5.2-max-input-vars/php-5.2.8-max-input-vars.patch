@@ -1,15 +1,3 @@
-diff -u -r php-5.2.8/configure.in php-5.2.8-patched/configure.in
---- php-5.2.8/configure.in	2011-12-31 09:54:03.000000000 +0800
-+++ php-5.2.8-patched/configure.in	2011-12-31 09:54:18.000000000 +0800
-@@ -42,7 +42,7 @@
- PHP_MAJOR_VERSION=5
- PHP_MINOR_VERSION=2
- PHP_RELEASE_VERSION=8
--PHP_EXTRA_VERSION=""
-+PHP_EXTRA_VERSION="p1"
- PHP_VERSION="$PHP_MAJOR_VERSION.$PHP_MINOR_VERSION.$PHP_RELEASE_VERSION$PHP_EXTRA_VERSION"
- PHP_VERSION_ID=`expr [$]PHP_MAJOR_VERSION \* 10000 + [$]PHP_MINOR_VERSION \* 100 + [$]PHP_RELEASE_VERSION`
- 
 diff -u -r php-5.2.8/main/main.c php-5.2.8-patched/main/main.c
 --- php-5.2.8/main/main.c	2008-11-02 22:12:15.000000000 +0800
 +++ php-5.2.8-patched/main/main.c	2011-12-30 16:18:23.000000000 +0800
@@ -21,6 +9,7 @@ diff -u -r php-5.2.8/main/main.c php-5.2.8-patched/main/main.c
  	STD_PHP_INI_BOOLEAN("always_populate_raw_post_data",	"0",	PHP_INI_SYSTEM|PHP_INI_PERDIR,	OnUpdateBool,	always_populate_raw_post_data,	php_core_globals,	core_globals)
  
  	STD_PHP_INI_ENTRY("realpath_cache_size",	"16K",		PHP_INI_SYSTEM,		OnUpdateLong,	realpath_cache_size_limit,	virtual_cwd_globals,	cwd_globals)
+Only in php-5.2.8-patched/main: php_config.h
 diff -u -r php-5.2.8/main/php_globals.h php-5.2.8-patched/main/php_globals.h
 --- php-5.2.8/main/php_globals.h	2007-12-31 15:20:15.000000000 +0800
 +++ php-5.2.8-patched/main/php_globals.h	2011-12-30 16:17:33.000000000 +0800
@@ -55,3 +44,13 @@ diff -u -r php-5.2.8/main/php_variables.c php-5.2.8-patched/main/php_variables.c
  				zend_symtable_update(symtable1, escaped_index, index_len + 1, &gpc_element, sizeof(zval *), (void **) &gpc_element_p);
  			}
  			if (escaped_index != index) {
+diff -u -r php-5.2.8/main/php_version.h php-5.2.8-patched/main/php_version.h
+--- php-5.2.8/main/php_version.h	2008-12-08 03:23:26.000000000 +0800
++++ php-5.2.8-patched/main/php_version.h	2011-12-30 16:31:13.000000000 +0800
+@@ -4,5 +4,5 @@
+ #define PHP_MINOR_VERSION 2
+ #define PHP_RELEASE_VERSION 8
+ #define PHP_EXTRA_VERSION ""
+-#define PHP_VERSION "5.2.8"
++#define PHP_VERSION "5.2.8-p1"
+ #define PHP_VERSION_ID 50208
