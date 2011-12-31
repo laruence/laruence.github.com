@@ -1,2 +1,3 @@
-Since this is a temporary fix, so only changed the version literal number after configure.
-These patches have better applied after configure(php_version.h generated).
+Since the latest PHP 5.3.9-RC4 has fixed this issue, so for 5.3 you can upgrade to 5.3.9RC4
+
+Of course if you don't want to upgrade to a RC version, you can simply tweak this patch into a 5.3 suitable patch.
